@@ -48,7 +48,7 @@ router.get('/logout', function (req, res) {
 router.get('/mail/auth/:id', async function (req, res) {
     // Request email token
     if (!req.locals.logInfo.double_auth) {
-        return res.status(401).send({ message: 'Not double auth in progress' });
+        return res.status(401).send({ message: 'No double auth in progress' });
     }
 
     if (!notif.mailSet()) {
