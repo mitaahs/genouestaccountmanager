@@ -47,6 +47,10 @@ router.get('/logout', function (req, res) {
 
 router.get('/mail/auth/:id', async function (req, res) {
     // Request email token
+    if (req.locals.logInfo.session_user.uid !== req.params.id) {
+        return res.status(401).send({ message: 'Not authorized : cannot request token for another user' });
+    }
+
     if (!req.locals.logInfo.double_auth) {
         return res.status(401).send({ message: 'No double auth in progress' });
     }
@@ -97,6 +101,10 @@ router.get('/mail/auth/:id', async function (req, res) {
 
 router.post('/mail/auth/:id', async function (req, res) {
     // Check email token
+    if (req.locals.logInfo.session_user.uid !== req.params.id) {
+        return res.status(401).send({ message: 'Not authorized : cannot request token for another user' });
+    }
+    
     if (!req.locals.logInfo.double_auth) {
         return res.status(401).send({ message: 'No double auth in progress' });
     }
