@@ -776,7 +776,8 @@ router.post('/user/:id', async function (req, res) {
         duration: req.body.duration,
         history: [{ action: 'register', date: new Date().getTime() }],
         extra_info: req.body.extra_info || [],
-        registration: new Date().getTime()
+        registration: new Date().getTime(),
+        disable_extend: CONFIG.general.default_disable_extend || false
     };
 
     // check if register user is done by admin or by anonymouse user
@@ -1120,6 +1121,12 @@ router.get('/user/:id/renew/:regkey', async function (req, res) {
     if (user.status != STATUS_ACTIVE) {
         return res.status(401).send({ message: 'Not authorized' });
     }
+
+    if (user.disable_extend === true || 
+    (user.disable_extend === undefined & CONFIG.general.default_disable_extend === true)) {
+        return res.status(401).send({ message: 'Not authorized' });
+    }
+
     let regkey = req.params.regkey;
     if (user.regkey == regkey) {
         user.history.push({ action: 'extend validity period', date: new Date().getTime() });
@@ -1405,6 +1412,9 @@ router.put('/user/:id', async function (req, res) {
         }
         if (req.body.send_copy_to_support !== undefined) {
             user.send_copy_to_support = req.body.send_copy_to_support;
+        }
+        if (req.body.disable_extend !== undefined) {
+            user.disable_extend = req.body.disable_extend;
         }
     }
 
