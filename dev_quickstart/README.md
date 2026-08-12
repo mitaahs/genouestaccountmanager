@@ -56,7 +56,7 @@ ng build --base-href /manager2/ --source-map --watch
 # The build will be done after the 'Time:' log entry
 ```
 
-From there, you can lauch the server with the following command:
+From there, you can launch the server with the following command:
 
 ```
 # You can use the following env variables to automatically create an admin user
