@@ -17,7 +17,7 @@
             "outputPath": "dist/my-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": ["zone.js", "src/polyfills.ts"]
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
@@ -124,24 +124,24 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-ui:build"
+            "buildTarget": "my-ui:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "my-ui:build:production"
+              "buildTarget": "my-ui:build:production"
             },
             "local": {
-              "browserTarget": "my-ui:build:local"
+              "buildTarget": "my-ui:build:local"
             },
             "genouest": {
-              "browserTarget": "my-ui:build:genouest"
+              "buildTarget": "my-ui:build:genouest"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-ui:build"
+            "buildTarget": "my-ui:build"
           }
         },
         "test": {

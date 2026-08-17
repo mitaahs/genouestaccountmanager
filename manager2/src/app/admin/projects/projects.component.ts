@@ -4,7 +4,7 @@ import { ConfigService } from 'src/app/config.service';
 import { Project, ProjectsService } from 'src/app/admin/projects/projects.service';
 import { Group, GroupsService } from 'src/app/admin/groups/groups.service';
 import { User, UserService } from 'src/app/user/user.service';
-import * as latinize from 'latinize';
+import latinize from 'latinize';
 import { Table } from 'primeng/table';
 
 @Component({

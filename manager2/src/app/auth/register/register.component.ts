@@ -4,7 +4,7 @@ import { ConfigService } from 'src/app/config.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import * as latinize from 'latinize';
+import latinize from 'latinize';
 
 @Component({
     selector: 'app-register',
