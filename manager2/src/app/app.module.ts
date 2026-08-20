@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injectable, ErrorHandler } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
@@ -70,8 +70,7 @@ export class SentryErrorHandler implements ErrorHandler {
     }
 }
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         AppComponent,
         UserComponent,
         UserExtraComponent,
@@ -121,10 +120,8 @@ export class SentryErrorHandler implements ErrorHandler {
         TagComponent,
         UserLogsComponent
     ],
-    imports: [
-        BrowserModule,
+    bootstrap: [AppComponent], imports: [BrowserModule,
         NgbModule,
-        HttpClientModule,
         AppRoutingModule,
         FormsModule,
         BrowserAnimationsModule,
@@ -132,13 +129,10 @@ export class SentryErrorHandler implements ErrorHandler {
         CalendarModule.forRoot({
             provide: DateAdapter,
             useFactory: adapterFactory
-        })
-    ],
-    providers: [
+        })], providers: [
         { provide: WindowWrapper, useFactory: getWindow, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-        { provide: ErrorHandler, useClass: SentryErrorHandler }
-    ],
-    bootstrap: [AppComponent]
-})
+        { provide: ErrorHandler, useClass: SentryErrorHandler },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule {}
