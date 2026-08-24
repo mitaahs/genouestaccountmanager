@@ -36,15 +36,15 @@
         <div class="alert alert-danger" *ngIf="form_err_msg">{{ form_err_msg }}</div>
         <div class="modal-footer">
           <div class="form-group row col-sm-12">
-            <button type="submit" class="btn btn-primary">Request MySQL Database</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <p-button type="submit" styleClass="btn btn-primary" label="Request MySQL Database"></p-button>
+            <p-button type="button" styleClass="btn btn-secondary" data-dismiss="modal" label="Close"></p-button>
           </div>
         </div>
       </form>
     </div>
   </div>
 </div>
-<button *ngIf="session_user" type="button" class="btn btn-primary" data-toggle="modal" data-target="#ask_database">Request A New Database</button>
+<p-button *ngIf="session_user" type="button" severity="primary" data-toggle="modal" data-target="#ask_database" label="Request A New Database"></p-button>
 
 <div class="card bg-light">
   <div class="card-header">

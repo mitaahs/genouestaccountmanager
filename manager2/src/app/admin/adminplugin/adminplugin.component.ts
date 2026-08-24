@@ -7,7 +7,8 @@ import { User } from '../../user/user.service';
 @Component({
     selector: 'app-adminplugin',
     templateUrl: './adminplugin.component.html',
-    styleUrls: ['./adminplugin.component.css']
+    styleUrls: ['./adminplugin.component.css'],
+    standalone: false
 })
 export class AdminpluginComponent implements OnInit {
     pluginId: string;

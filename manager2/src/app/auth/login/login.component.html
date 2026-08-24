@@ -16,12 +16,12 @@
           <i class="toggle-password pi" [ngClass]="passwordVisible ? 'pi-eye-slash' : 'pi-eye'" (click)="togglePasswordVisibility()" aria-label="Toggle password visibility" role="button" tabindex="0"></i>
         </div>
         <div class="form-group">
-          <button class="p-button p-button-lg p-button-primary btn-block" [ngStyle]="{ display: 'block' }" type="submit" (click)="login()">Sign in</button>
+          <p-button label="Sign in" styleClass="bigger-login-button w-100" severity="primary" size="large" type="submit" (onClick)="login()"></p-button>
         </div>
         <div class="alert alert-warning" *ngIf="msg">{{ msg }}</div>
         <div class="form-group">
           <span class="lost">Lost your password?</span>
-          <button class="btn btn-sm" (click)="password_reset_request()">RESET</button>
+          <p-button severity="danger" size="small" (onClick)="password_reset_request()" label="RESET"></p-button>
         </div>
       </form>
     </div>
@@ -45,7 +45,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <button type="button" class="p-button p-button-sm p-button--primary" (click)="manageOTP()">Check OTP token</button>
+            <p-button type="button" severity="primary" size="small" (click)="manageOTP()" label="Check OTP token"></p-button>
           </div>
         </div>
         <h4 class="text-center login-title"><strong>or</strong></h4>
@@ -55,7 +55,7 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            <button type="button" class="p-button p-button-sm p-button-primary" (click)="request_email_token()">Request</button>
+            <p-button type="button" styleClass="p-button p-button-primary" size="small" (click)="request_email_token()">Request</p-button>
           </div>
           <div class="col-md-8">
             <div class="form-group">
@@ -63,7 +63,7 @@
             </div>
           </div>
         </div>
-        <button *ngIf="mail_token" type="button" class="p-button p-button-lg p-button-primary btn-block" [ngStyle]="{ display: 'block' }" (click)="validate_email_token()">Check token</button>
+        <p-button *ngIf="mail_token" type="button" styleClass="p-button p-button-primary btn-block" size="large" [ngStyle]="{ display: 'block' }" (click)="validate_email_token()">Check token</p-button>
       </form>
     </div>
   </div>
@@ -75,7 +75,7 @@
   </div>
   <div class="row justify-content-center">
     <form class="form-signin">
-      <a routerLink="/register" class="p-button p-button-lg btn-primary btn-block" [ngStyle]="{ display: 'block' }">Create an account</a>
+      <p-button routerLink="/register" styleClass="bigger-login-button" size="large" label="Create an account"></p-button>
     </form>
   </div>
 </div>

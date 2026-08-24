@@ -4,7 +4,8 @@ import { UserService } from './user.service';
 
 @Component({
     selector: 'app-userlogs',
-    templateUrl: './userlogs.component.html'
+    templateUrl: './userlogs.component.html',
+    standalone: false
 })
 export class UserLogsComponent {
     @Input() user: string;

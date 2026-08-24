@@ -8,7 +8,8 @@ import { Table } from 'primeng/table';
 @Component({
     selector: 'app-logs',
     templateUrl: './logs.component.html',
-    styleUrls: ['./logs.component.css']
+    styleUrls: ['./logs.component.css'],
+    standalone: false
 })
 export class LogsComponent implements OnInit {
     @ViewChild('dtp') table: Table;

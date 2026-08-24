@@ -10,7 +10,8 @@ import { Table } from 'primeng/table';
 @Component({
     selector: 'app-project',
     templateUrl: './project.component.html',
-    styleUrls: ['./project.component.css']
+    styleUrls: ['./project.component.css'],
+    standalone: false
 })
 export class ProjectComponent implements OnInit {
     @ViewChild('dtp') table: Table;

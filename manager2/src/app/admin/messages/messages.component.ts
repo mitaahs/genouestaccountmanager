@@ -16,7 +16,8 @@ import { Table } from 'primeng/table';
 @Component({
     selector: 'app-messages',
     templateUrl: './messages.component.html',
-    styleUrls: ['./messages.component.css']
+    styleUrls: ['./messages.component.css'],
+    standalone: false
 })
 export class MessagesComponent implements OnInit {
     @ViewChild('dtp') table: Table;

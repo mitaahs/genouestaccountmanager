@@ -19,7 +19,8 @@ const eventColors = {
     selector: 'app-tps',
     templateUrl: './tps.component.html',
     styleUrls: ['./tps.component.css'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TpsComponent implements OnInit {
     config: any;

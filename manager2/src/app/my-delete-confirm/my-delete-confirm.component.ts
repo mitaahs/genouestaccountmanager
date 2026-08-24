@@ -3,7 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
     selector: 'app-my-delete-confirm',
     templateUrl: './my-delete-confirm.component.html',
-    styleUrls: ['./my-delete-confirm.component.css']
+    styleUrls: ['./my-delete-confirm.component.css'],
+    standalone: false
 })
 export class MyDeleteConfirmComponent implements OnInit {
     isDeleting: boolean;

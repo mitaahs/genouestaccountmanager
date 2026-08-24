@@ -3,6 +3,10 @@ import { NgModule, Injectable, ErrorHandler } from '@angular/core';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { providePrimeNG } from 'primeng/config';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,6 +54,7 @@ import { UserLogsComponent } from './user/userlogs.component';
 import { TableModule } from 'primeng/table';
 import { environment } from '../environments/environment';
 import * as Sentry from '@sentry/browser';
+import { Preset } from './custom.preset';
 
 if (environment.sentry) {
     Sentry.init({
@@ -126,6 +131,8 @@ export class SentryErrorHandler implements ErrorHandler {
         FormsModule,
         BrowserAnimationsModule,
         TableModule,
+        BrowserAnimationsModule,
+        ButtonModule,
         CalendarModule.forRoot({
             provide: DateAdapter,
             useFactory: adapterFactory
@@ -133,6 +140,12 @@ export class SentryErrorHandler implements ErrorHandler {
         { provide: WindowWrapper, useFactory: getWindow, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
         { provide: ErrorHandler, useClass: SentryErrorHandler },
-        provideHttpClient(withInterceptorsFromDi())
+        provideHttpClient(withInterceptorsFromDi()),
+        provideAnimationsAsync(),
+        providePrimeNG({ 
+            theme: {
+                preset: Preset,
+                }
+            })
     ] })
 export class AppModule {}

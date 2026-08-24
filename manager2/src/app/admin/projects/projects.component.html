@@ -39,10 +39,10 @@
         </div>
         <div class="col-sm-1" *ngIf="!config.project || config.project.enable_group">
           <label for="group_create" style="opacity: 0">Create</label>
-          <button id="group_create" type="button" class="p-button button-primary" data-toggle="modal" data-target="#group_creation">
+          <p-button id="group_create" type="button" styleClass=" button-primary" data-toggle="modal" data-target="#group_creation">
             <span class="oi oi-plus" aria-hidden="true"></span>
             <span class="glyphicon glyphicon-question-sign" data-html="true" title="Create a new group for this project" tooltip> </span>
-          </button>
+          </p-button>
         </div>
         <div class="col-sm-2">
           <label for="project_size">Size (GB)</label>
@@ -95,7 +95,7 @@
       <div class="form-group row">
         <div class="col-sm-2">
           <label style="opacity: 0">Create</label>
-          <button type="button" class="p-button p-button-success" (click)="add_project()">Create project</button>
+          <p-button severity="success" type="button" (onClick)="add_project()" label="Create project"></p-button>
         </div>
         <div class="col-sm-2" *ngIf="new_project.uuid && new_project.uuid != ''">
           <label style="opacity: 0;">Reject</label>
@@ -103,11 +103,11 @@
         </div>
         <div class="col-sm-2" *ngIf="new_project.uuid && new_project.uuid != ''">
           <label style="opacity: 0;">Edit</label>
-          <button type="button" class="p-button" (click)="edit_project()">Save changes</button>
+          <p-button type="button" (onClick)="edit_project()" label="Save changes"></p-button>
         </div>
         <div class="col-sm-2" *ngIf="new_project.uuid && new_project.uuid != ''">
           <label style="opacity: 0">De-select</label>
-          <button type="button" class="p-button p-button-secondary" (click)="new_project = {}">Undo selection</button>
+          <p-button severity="secondary" type="button" (onClick)="new_project = {}" label="Undo selection"></p-button>
         </div>
       </div>
     </form>
@@ -158,7 +158,7 @@
                   <td>{{ pending.cpu }}</td>
                   <td>{{ pending.orga }}</td>
                   <td>
-                    <button type="button" style="margin-right: 0px !important" class="p-button p-button-sm p-button-info" (click)="modify_project(pending)">View</button>
+                    <p-button severity="info" size="small" type="button" style="margin-right: 0px !important" (onClick)="modify_project(pending)" label="View"></p-button>
                   </td>
                 </tr>
               </ng-template>
@@ -327,8 +327,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="p-button p-button-sm p-button-primary" [disabled]="!new_group.name" data-dismiss="modal" (click)="addGroup()">Create</button>
-        <button type="button" class="p-button p-button-sm p-button-secondary" data-dismiss="modal">Close</button>
+        <p-button severity="primary" size="small" type="button" [disabled]="!new_group.name" data-dismiss="modal" (onClick)="addGroup()" label="Create"></p-button>
+        <p-button severity="secondary" size="small" type="button" data-dismiss="modal" label="Close"></p-button>
       </div>
     </div>
   </div>

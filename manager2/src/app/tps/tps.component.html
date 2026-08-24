@@ -1,9 +1,9 @@
 <div class="row text-center">
   <div class="col-md-8">
     <div class="btn-group">
-      <button type="button" class="btn" (click)="prevMonth()">Previous</button>
-      <button type="button" class="btn" (click)="curMonth()">Today</button>
-      <button type="button" class="btn" (click)="nextMonth()">Next</button>
+      <p-button type="button" styleClass="btn" (onClick)="prevMonth()" label="Previous"></p-button>
+      <p-button type="button" styleClass="btn" (onClick)="curMonth()" label="Today"></p-button>
+      <p-button type="button" styleClass="btn" (onClick)="nextMonth()" label="Next"></p-button>
     </div>
   </div>
 </div>
@@ -108,10 +108,10 @@
           </table>
         </div>
 
-        <button *ngIf="!selectedEvent.meta.created && !selectedEvent.meta.over && session_user.is_admin" class="p-button p-button-sm p-button-primary" (click)="create_reservation()">Create</button>
-        <button *ngIf="!selectedEvent.meta.created && !selectedEvent.meta.over && authorized" class="p-button p-button-sm p-button-secondary" (click)="cancel_reservation()">Cancel</button>
-        <button *ngIf="selectedEvent.meta.created && !selectedEvent.meta.over && session_user.is_admin" type="button" class="p-button p-button-sm p-button-primary" data-toggle="modal" data-target="#extend">Extend</button>
-        <button *ngIf="selectedEvent.meta.created && !selectedEvent.meta.over && session_user.is_admin" class="p-button p-button-sm p-button-warning" (click)="remove_reservation()">Remove</button>
+        <p-button severity="primary" size="small" *ngIf="!selectedEvent.meta.created && !selectedEvent.meta.over && session_user.is_admin" (onClick)="create_reservation()" label="Create"></p-button>
+        <p-button severity="secondary" size="small" *ngIf="!selectedEvent.meta.created && !selectedEvent.meta.over && authorized" (onClick)="cancel_reservation()" label="Cancel"></p-button>
+        <p-button severity="primary" size="small" *ngIf="selectedEvent.meta.created && !selectedEvent.meta.over && session_user.is_admin" type="button" data-toggle="modal" data-target="#extend" label="Extend"></p-button>
+        <p-button severity="warn" size="small" *ngIf="selectedEvent.meta.created && !selectedEvent.meta.over && session_user.is_admin" (onClick)="remove_reservation()" label="Remove"></p-button>
       </div>
     </div>
   </div>
@@ -137,8 +137,8 @@
         </div>
         <div class="modal-footer">
           <div class="form-group row col-sm-12">
-            <button type="button" class="p-button p-button-sm p-button-primary" (click)="extend_reservation()" data-dismiss="modal">Extend</button>
-            <button type="button" class="p-button p-button-sm p-button-secondary" data-dismiss="modal">Cancel</button>
+            <p-button severity="primary" size="small" type="button" (onClick)="extend_reservation()" data-dismiss="modal" label="Extend"></p-button>
+            <p-button severity="secondary" size="small" type="button" data-dismiss="modal" label="Cancel"></p-button>
           </div>
         </div>
       </form>
@@ -213,7 +213,7 @@
 
           <div class="col-md-4">
             <label class="control-label"></label>
-            <button type="submit" class="p-button p-button-sm p-button-secondary">Reserve</button>
+            <p-button severity="secondary" size="small" type="submit" label="Reserve"></p-button>
           </div>
         </form>
       </div>

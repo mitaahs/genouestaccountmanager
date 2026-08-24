@@ -32,7 +32,8 @@ import { NgModel } from '@angular/forms';
 @Component({
     selector: 'app-user-extra',
     templateUrl: './user-extra.component.html',
-    styleUrls: ['./user-extra.component.css']
+    styleUrls: ['./user-extra.component.css'],
+    standalone: false
 })
 export class UserExtraComponent implements OnInit {
     @Input() user: User;
@@ -110,7 +111,8 @@ export class UserExtraComponent implements OnInit {
 @Component({
     selector: 'app-user',
     templateUrl: './user.component.html',
-    styleUrls: ['./user.component.css']
+    styleUrls: ['./user.component.css'],
+    standalone: false
 })
 export class UserComponent implements OnInit {
     user_projects: any[];

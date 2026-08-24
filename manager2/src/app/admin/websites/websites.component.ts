@@ -7,7 +7,8 @@ import { Table } from 'primeng/table';
 @Component({
     selector: 'app-websites',
     templateUrl: './websites.component.html',
-    styleUrls: ['./websites.component.css']
+    styleUrls: ['./websites.component.css'],
+    standalone: false
 })
 export class WebsitesComponent implements OnInit {
     @ViewChild('dtp') table: Table;

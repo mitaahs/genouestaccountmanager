@@ -19,12 +19,12 @@
       </div>
     </div>
     <div class="col-sm-2">
-      <button *ngIf="session_user.is_admin && (user.status == STATUS_PENDING_APPROVAL || user.status == STATUS_PENDING_EMAIL)" class="p-button p-button-sm p-button-success" (click)="activate()">Activate</button>
-      <button *ngIf="user.status == STATUS_ACTIVE" class="p-button p-button-sm p-button-success" (click)="extend()">Extend</button>
-      <button *ngIf="session_user.is_admin && user.status == STATUS_EXPIRED" class="p-button p-button-sm p-button-success" (click)="renew()">Renew</button>
+      <p-button severity="success" size="small" *ngIf="session_user.is_admin && (user.status == STATUS_PENDING_APPROVAL || user.status == STATUS_PENDING_EMAIL)" (onClick)="activate()" label="Activate"></p-button>
+      <p-button *ngIf="user.status === STATUS_ACTIVE" label="Extend" severity="success" size="small" (onClick)="extend()"> </p-button>
+      <p-button severity="success" size="small" *ngIf="session_user.is_admin && user.status == STATUS_EXPIRED" (onClick)="renew()" label="Renew"></p-button>
     </div>
     <div *ngIf="user.is_locked && session_user.is_admin" class="col-sm-2">
-      <button class="p-button p-button-sm p-button-primary" (click)="unlock()">Unlock</button>
+      <p-button severity="primary" size="small" (onClick)="unlock()" label="Unlock"></p-button>
     </div>
     <div class="col-sm-3">
       <div *ngIf="session_user.is_admin && (user.status == STATUS_PENDING_APPROVAL || user.status == STATUS_PENDING_EMAIL)"><app-my-delete-confirm [onConfirm]="delete" [data]="" [explainMessage]="true"></app-my-delete-confirm></div>
@@ -51,19 +51,19 @@
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item" (click)="switchTo(0)">
-        <button class="p-button p-button-sm p-button-outline-primary nav-link">Information</button>
+        <p-button size="small" styleClass="-outline-primary nav-link" label="Information"></p-button>
       </li>
       <li class="nav-item" (click)="switchTo(1)">
-        <button class="p-button p-button-sm p-button-outline-primary nav-link">SSH</button>
+        <p-button size="small" styleClass="-outline-primary nav-link" label="SSH"></p-button>
       </li>
       <li class="nav-item" (click)="switchTo(2)">
-        <button class="p-button p-button-sm p-button-outline-primary nav-link">Details</button>
+        <p-button size="small" styleClass="-outline-primary nav-link" label="Details"></p-button>
       </li>
       <li class="nav-item" (click)="switchTo(3)">
-        <button class="p-button p-button-sm p-button-outline-primary nav-link">History</button>
+        <p-button size="small" styleClass="-outline-primary nav-link" label="History"></p-button>
       </li>
       <li class="nav-item" *ngIf="session_user.is_admin" (click)="switchTo(4)">
-        <button class="p-button p-button-sm p-button-outline-primary nav-link">Send mail</button>
+        <p-button size="small" styleClass="-outline-primary nav-link" label="Send mail"></p-button>
       </li>
     </ul>
   </div>
@@ -157,9 +157,9 @@
                     </div>
                     <div *ngIf="user.group == this.missing_group" class="groupCreation col-2">
                       <div>
-                        <button type="button" class="p-button p-button-sm p-button-primary" data-toggle="modal" data-target="#group_creation">
+                        <p-button severity="primary" size="small" type="button" data-toggle="modal" data-target="#group_creation">
                           <span class="oi oi-plus" aria-hidden="true"></span>
-                        </button>
+                        </p-button>
                       </div>
                     </div>
                   </div>
@@ -242,7 +242,7 @@
             </div>
             <div class="alert alert-success" role="alert" *ngIf="update_msg">{{ update_msg }}</div>
             <div class="alert alert-danger" role="alert" *ngIf="update_error_msg">{{ update_error_msg }}</div>
-            <button type="button" class="p-button p-button-sm p-button-primary pull-right" (click)="update_info()">Update info</button>
+            <p-button severity="primary" size="small" type="button" styleClass="  pull-right" (onClick)="update_info()" label="Update info"></p-button>
           </div>
         </div>
 
@@ -252,7 +252,7 @@
             <app-user-extra [user]="user" (extraValues)="onExtraValue($event)"></app-user-extra>
             <div class="alert alert-success" role="alert" *ngIf="update_msg">{{ update_msg }}</div>
             <div class="alert alert-danger" role="alert" *ngIf="update_error_msg">{{ update_error_msg }}</div>
-            <button type="button" class="p-button p-button-sm p-button-primary pull-right" (click)="update_info()">Update info</button>
+            <p-button severity="primary" size="small" type="button" styleClass="  pull-right" (onClick)="update_info()" label="Update info"></p-button>
           </div>
         </div>
       </div>
@@ -277,7 +277,7 @@
               <textarea class="form-control" [ngModelOptions]="{ standalone: true }" [(ngModel)]="note"></textarea>
             </div>
             <div class="form-group">
-              <button type="button" class="p-button p-button-sm p-button-primary" (click)="add_note()">Add note</button>
+              <p-button severity="primary" size="small" type="button" (onClick)="add_note()" label="Add note"></p-button>
             </div>
           </div>
         </div>
@@ -290,12 +290,12 @@
             <div class="row">
               <div class="col-sm-12" style="margin-bottom: 10px">
                 <span *ngIf="user.u2f.key"><span class="glyphicon glyphicon-ok"> </span> Using Webauthn key</span>
-                <button class="p-button p-button-sm p-button-primary btn-sm" (click)="register_u2f()">Register new key</button>
+                <p-button severity="primary" size="small" styleClass="  btn-sm" (onClick)="register_u2f()" label="Register new key"></p-button>
                 <span *ngIf="u2f">{{ u2f }}</span>
               </div>
               <div class="col-sm-12">
-                <button *ngIf="!((user.otp && user.otp.secret) || otp)" class="p-button p-button-sm p-button-primary btn-sm" (click)="register_otp()">Register OTP</button>
-                <button *ngIf="user.otp && user.otp.secret" class="p-button p-button-sm p-button-danger btn-sm" (click)="remove_otp()">Remove OTP</button>
+                <p-button severity="primary" size="small" *ngIf="!((user.otp && user.otp.secret) || otp)" styleClass="  btn-sm" (onClick)="register_otp()" label="Register OTP"></p-button>
+                <p-button severity="danger" size="small" *ngIf="user.otp && user.otp.secret" styleClass="  btn-sm" (onClick)="remove_otp()" label="Remove OTP"></p-button>
                 <img alt="{{ secret }}" *ngIf="otp" src="{{ otp }}" />
                 <div class="alert alert-success" role="alert" *ngIf="msg">{{ otp_msg }}</div>
                 <div class="alert alert-danger" role="alert" *ngIf="err_msg">{{ otp_err_msg }}</div>
@@ -309,7 +309,7 @@
           </div>
           <div class="card-body">
             <span>{{ user.apikey }}</span>
-            <button style="margin-left: 10px" class="p-button p-button-sm p-button-primary" (click)="generate_apikey(user.uid)">Generate</button>
+            <p-button severity="primary" size="small" style="margin-left: 10px" (onClick)="generate_apikey(user.uid)" label="Generate"></p-button>
           </div>
         </div>
         <div class="card bg-light">
@@ -368,7 +368,7 @@
                 </div>
               </div>
 
-              <button type="button" class="p-button p-button-sm p-button-primary mt-3" (click)="update_password(password1Model, password2Model)" [disabled]="!isFormValid() || password1 !== password2" [ngClass]="{ 'btn-disabled': !isFormValid() || password1 !== password2 }">Change password</button>
+              <p-button severity="primary" size="small" type="button" class="  mt-3" (onClick)="update_password(password1Model, password2Model)" [disabled]="!isFormValid() || password1 !== password2" [ngstyleClass]="{ 'btn-disabled': !isFormValid() || password1 !== password2 }" label="Change password"></p-button>
             </form>
           </div>
         </div>
@@ -380,15 +380,15 @@
           <div class="card-body">
             <div *ngIf="add_group_msg" class="alert alert-success alert-dismissible" role="alert">
               {{ add_group_msg }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <p-button type="button" styleClass="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button>
+              </p-button>
             </div>
             <div *ngIf="rm_group_msg" class="alert alert-warning alert-dismissible" role="alert">
               {{ rm_group_msg }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <p-button type="button" styleClass="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button>
+              </p-button>
             </div>
             <div class="form-group row">
               <div class="col-sm-6">
@@ -399,7 +399,7 @@
               </div>
             </div>
             <div class="form-group">
-              <button type="button" class="p-button p-button-sm p-button-primary" (click)="add_secondary_group()">Add to group</button>
+              <p-button severity="primary" size="small" type="button" (onClick)="add_secondary_group()" label="Add to group"></p-button>
             </div>
             <hr />
             <div class="table-responsive">
@@ -457,9 +457,9 @@
           <div class="card-body">
             <div *ngIf="ssh_message" class="alert alert-success alert-dismissible" role="alert">
               {{ ssh_message }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <p-button type="button" styleClass="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-              </button>
+              </p-button>
             </div>
             <div>
               <form aria-label="ssh key" role="form" class="user-form form-inline">
@@ -467,7 +467,7 @@
                   <input placeholder="SSH public key (one line)" type="text" [ngModelOptions]="{ standalone: true }" [(ngModel)]="user.ssh" class="form-control" />
                 </div>
                 <div class="form-group">
-                  <button type="button" class="p-button p-button-sm p-button-primary" (click)="update_ssh()">Add</button>
+                  <p-button severity="primary" size="small" type="button" (onClick)="update_ssh()" label="Add"></p-button>
                 </div>
               </form>
             </div>
@@ -484,12 +484,12 @@
             <div class="alert alert-info" role="alert">When generating a key, public key is automatically added to authorized keys, process takes one minute</div>
             <div *ngIf="key_err" class="alert alert-warning alert-dismissible fade show" role="alert">{{ key_err }}</div>
             <div *ngIf="new_key_message" class="alert alert-success">{{ new_key_message }}</div>
-            <button class="p-button p-button-sm p-button-primary" (click)="ssh_new_key()">Generate new key</button>
+            <p-button severity="primary" size="small" (onClick)="ssh_new_key()" label="Generate new key"></p-button>
             <hr />
             <h4 style="font-weight: normal">Download</h4>
-            <button (click)="get_key(user.uid, 'private')" class="p-button p-button-sm p-button-primary">private rsa key</button>
-            <button (click)="get_key(user.uid, 'putty')" class="p-button p-button-sm p-button-primary">putty private key</button>
-            <button (click)="get_key(user.uid, 'public')" class="p-button p-button-sm p-button-primary">public key</button>
+            <p-button severity="primary" size="small" (onClick)="get_key(user.uid, 'private')" label="private rsa key"></p-button>
+            <p-button severity="primary" size="small" (onClick)="get_key(user.uid, 'putty')" label="putty private key"></p-button>
+            <p-button severity="primary" size="small" (onClick)="get_key(user.uid, 'public')" label="public key"></p-button>
           </div>
         </div>
       </div>
@@ -505,15 +505,15 @@
                 <div *ngIf="session_user.is_admin">
                   <div *ngIf="webmsg" class="alert alert-success alert-dismissible" role="alert">
                     {{ webmsg }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <p-button type="button" styleClass="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
-                    </button>
+                    </p-button>
                   </div>
                   <div *ngIf="rmwebmsg" class="alert alert-warning alert-dismissible" role="alert">
                     {{ rmwebmsg }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <p-button type="button" styleClass="close" data-dismiss="alert" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
-                    </button>
+                    </p-button>
                   </div>
                   <div class="form-group row">
                     <div class="col-sm-6">
@@ -526,7 +526,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <button type="button" class="p-button p-button-sm p-button-primary" (click)="web_add()">Declare owned site</button>
+                    <p-button severity="primary" size="small" type="button" (onClick)="web_add()" label="Declare owned site"></p-button>
                   </div>
                 </div>
                 <div>
@@ -592,7 +592,7 @@
               <textarea class="form-control" [ngModelOptions]="{ standalone: true }" [(ngModel)]="notify_message" placeholder="mail message in markdown"></textarea>
             </div>
             <div class="form-group">
-              <button type="button" class="p-button p-button-sm p-button-primary" (click)="sendmail()">Send mail</button>
+              <p-button severity="primary" size="small" type="button" (onClick)="sendmail()" label="Send mail"></p-button>
             </div>
           </div>
         </div>
@@ -617,8 +617,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="p-button p-button-sm p-button-primary" [disabled]="!new_group.name" data-dismiss="modal" (click)="addGroup()">Create</button>
-        <button type="button" class="p-button p-button-sm p-button-secondary" data-dismiss="modal">Close</button>
+        <p-button severity="primary" size="small" type="button" [disabled]="!new_group.name" data-dismiss="modal" (onClick)="addGroup()" label="Create"></p-button>
+        <p-button severity="secondary" size="small" type="button" data-dismiss="modal" label="Close"></p-button>
       </div>
     </div>
   </div>

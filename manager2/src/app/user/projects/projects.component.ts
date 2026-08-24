@@ -5,7 +5,8 @@ import { Project } from '../../admin/projects/projects.service';
 @Component({
     selector: 'app-user-projects',
     templateUrl: './projects.component.html',
-    styleUrls: ['./projects.component.css']
+    styleUrls: ['./projects.component.css'],
+    standalone: false
 })
 export class ProjectsComponent implements OnInit {
     @Input() projects: Project[];

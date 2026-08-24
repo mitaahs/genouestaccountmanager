@@ -3,7 +3,8 @@ import { PluginService } from '../plugin.service';
 
 @Component({
     template: '<div></div>',
-    styleUrls: ['./base-plugin.component.css']
+    styleUrls: ['./base-plugin.component.css'],
+    standalone: false
 })
 export class BasePluginComponent {
     @Input() userId: string;

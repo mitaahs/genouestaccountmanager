@@ -5,7 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'app-user-extend',
     templateUrl: './user-extend.component.html',
-    styleUrls: ['./user-extend.component.css']
+    styleUrls: ['./user-extend.component.css'],
+    standalone: false
 })
 export class UserExtendComponent implements OnInit {
     msg: string;

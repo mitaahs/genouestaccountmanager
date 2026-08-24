@@ -10,12 +10,12 @@
       </datalist>
     </div>
     <div class="col-4">
-      <button class="p-button p-button-sm p-button-primary" (click)="addTag()">Add</button>
+      <p-button size="small" severity="primary" (onClick)="addTag()" label="Add"></p-button>
     </div>
   </div>
   <div class="row">
     <span *ngFor="let tag of tags" class="tag label label-primary">{{ tag }} <small class="oi oi-delete" title="remove" (click)="deleteTag(tag)"></small></span>
   </div>
 
-  <button class="p-button p-button-sm p-button-primary" (click)="updateTags()">Update</button>
+  <p-button size="small" severity="primary" (onClick)="updateTags()" label="Update"></p-button>
 </div>

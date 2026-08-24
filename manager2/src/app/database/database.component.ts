@@ -8,7 +8,8 @@ import { Table } from 'primeng/table';
 @Component({
     selector: 'app-database',
     templateUrl: './database.component.html',
-    styleUrls: ['./database.component.css']
+    styleUrls: ['./database.component.css'],
+    standalone: false
 })
 export class DatabaseComponent implements OnInit {
     @ViewChild('dtp') table: Table;

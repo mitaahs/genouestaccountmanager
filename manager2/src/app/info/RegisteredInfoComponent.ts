@@ -9,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
         <p>Once confirmed, administrators will <b>manually validate</b> your account.</p>
     </div> `,
     // templateUrl: './info.component.html',
-    styleUrls: ['./info.component.css']
+    styleUrls: ['./info.component.css'],
+    standalone: false
 })
 export class RegisteredInfoComponent implements OnInit {
     constructor() {}

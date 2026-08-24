@@ -7,7 +7,7 @@ import { BasePluginComponent } from './base-plugin/base-plugin.component';
         <div *ngIf="data">
             <div><input [ngModelOptions]="{ standalone: true }" [(ngModel)]="data.newlist" /></div>
             <div style="margin-top: 10px;">
-                <button (click)="sendData()" type="button" class="p-button p-button-sm p-button-default">Create</button>
+                <p-button size="small" (onClick)="sendData()" type="button" styleClass="-default" label="Create"></p-button>
             </div>
         </div>
         <div *ngIf="data" class="table-responsive">
@@ -20,7 +20,8 @@ import { BasePluginComponent } from './base-plugin/base-plugin.component';
                 </tr>
             </table>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class GomailPluginComponent extends BasePluginComponent implements OnInit {
     ngOnInit() {
@@ -39,7 +40,7 @@ export class GomailPluginComponent extends BasePluginComponent implements OnInit
             </div>
 
             <div style="text-align:center;">
-                <button (click)="sendData()" type="button" class="p-button p-button-sm p-button-primary">Update</button>
+                <p-button severity="primary" size="small" (onClick)="sendData()" type="button" label="Update"></p-button>
             </div>
             <br />
             <div *ngIf="data.api_status" class="alert alert-danger">{{ data.api_status }}</div>
@@ -58,7 +59,8 @@ export class GomailPluginComponent extends BasePluginComponent implements OnInit
                 </tr>
             </table>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class DataAccessPluginComponent extends BasePluginComponent implements OnInit {
     ngOnInit() {
@@ -68,7 +70,8 @@ export class DataAccessPluginComponent extends BasePluginComponent implements On
 }
 
 @Component({
-    template: ` <div></div> `
+    template: ` <div></div> `,
+    standalone: false
 })
 export class GalaxyPluginComponent extends BasePluginComponent implements OnInit {
     ngOnInit() {
@@ -83,9 +86,9 @@ export class GalaxyPluginComponent extends BasePluginComponent implements OnInit
             <div *ngIf="loading">Loading...</div>
             <div *ngIf="data.api_status" class="alert alert-danger">{{ data.api_status }}</div>
             <div *ngIf="data.has_project == 'False'" style="text-align:center;">
-                <button (click)="sendData()" type="button" class="p-button p-button-sm p-button-primary">
+                <p-button severity="primary" size="small" (onClick)="sendData()" type="button" >
                     Activate cloud account
-                </button>
+                </p-button>
             </div>
             <div *ngIf="data.my" class="alert alert-success">{{ data.my }}</div>
             <div *ngIf="data.has_project == 'True'">
@@ -98,7 +101,8 @@ export class GalaxyPluginComponent extends BasePluginComponent implements OnInit
                 </table>
             </div>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class GenostackPluginComponent extends BasePluginComponent implements OnInit {
     ngOnInit() {
@@ -112,7 +116,8 @@ export class GenostackPluginComponent extends BasePluginComponent implements OnI
         <div>
             <div>Populate_home will create a project_demo folder upon user activation.</div>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class PopulateHomePluginComponent extends BasePluginComponent implements OnInit {
     ngOnInit() {
@@ -141,7 +146,8 @@ export class PopulateHomePluginComponent extends BasePluginComponent implements 
                 </tr>
             </table>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class QuotasPluginComponent extends BasePluginComponent implements OnInit {
     ngOnInit() {
@@ -156,10 +162,11 @@ export class QuotasPluginComponent extends BasePluginComponent implements OnInit
             <div *ngIf="data && data.alert" class="alert alert-warning"><strong>Warning!</strong> {{ data.alert }}</div>
             <div *ngIf="data">
                 <p>hello {{ data.my }}</p>
-                <button (click)="sendData()">Test me</button>
+                <p-button (onClick)="sendData()" label="Test me"></p-button>
             </div>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class TestPluginComponent extends BasePluginComponent implements OnInit {
     ngOnInit() {
@@ -225,11 +232,12 @@ export class TestPluginComponent extends BasePluginComponent implements OnInit {
                             />
                         </div>
                     </form>
-                    <button *ngIf="data.selected" (click)="sendData()">Update</button>
+                    <p-button *ngIf="data.selected" (onClick)="sendData()" label="Update"></p-button>
                 </div>
             </div>
         </div>
-    `
+    `,
+    standalone: false
 })
 export class AdminQuotaExamplePluginComponent extends BasePluginComponent implements OnInit {
     ngOnInit() {
@@ -240,7 +248,8 @@ export class AdminQuotaExamplePluginComponent extends BasePluginComponent implem
 }
 
 @Directive({
-    selector: '[app-plugin-view]'
+    selector: '[app-plugin-view]',
+    standalone: false
 })
 export class PluginDirective {
     constructor(public viewContainerRef: ViewContainerRef) {}
@@ -298,7 +307,8 @@ export class PluginItems {
 @Component({
     selector: 'app-plugin',
     templateUrl: './plugin.component.html',
-    styleUrls: ['./plugin.component.css']
+    styleUrls: ['./plugin.component.css'],
+    standalone: false
 })
 export class PluginComponent implements OnInit, OnChanges {
     @Input() pluginItem: string;

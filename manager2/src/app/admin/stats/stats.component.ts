@@ -4,7 +4,8 @@ import { UserService } from 'src/app/user/user.service';
 @Component({
     selector: 'app-stats',
     templateUrl: './stats.component.html',
-    styleUrls: ['./stats.component.css']
+    styleUrls: ['./stats.component.css'],
+    standalone: false
 })
 export class AdminStatComponent implements OnInit {
     constructor(private userService: UserService) {}

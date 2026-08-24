@@ -6,7 +6,8 @@ import { Table } from 'primeng/table';
 
 @Pipe({
     name: 'statusFilter',
-    pure: false
+    pure: false,
+    standalone: false
 })
 export class MyStatusFilterPipe implements PipeTransform {
     transform(items: any[], filter: string): any {
@@ -22,7 +23,8 @@ export class MyStatusFilterPipe implements PipeTransform {
 @Component({
     selector: 'app-users',
     templateUrl: './users.component.html',
-    styleUrls: ['./users.component.css']
+    styleUrls: ['./users.component.css'],
+    standalone: false
 })
 export class UsersComponent implements OnInit {
     @ViewChild('dt1') table1: Table;

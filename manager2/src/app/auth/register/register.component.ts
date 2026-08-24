@@ -9,7 +9,8 @@ import latinize from 'latinize';
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
-    styleUrls: ['./register.component.css']
+    styleUrls: ['./register.component.css'],
+    standalone: false
 })
 export class RegisterComponent implements OnInit {
     //@ViewChild('extras') extras: UserExtraComponent

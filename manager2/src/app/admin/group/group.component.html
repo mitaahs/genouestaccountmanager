@@ -29,7 +29,7 @@
           <input type="text" placeholder="Description" id="group_desc" [ngModelOptions]="{ standalone: true }" [(ngModel)]="group.description" class="form-control" />
         </div>
       </div>
-      <button type="button" class="p-button p-button-sm p-button-primary" (click)="updateGroup()">Update</button>
+      <p-button type="button" size="small" severity="primary" (onClick)="updateGroup()" label="Update"></p-button>
       <div class="form-group"></div>
     </form>
   </div>

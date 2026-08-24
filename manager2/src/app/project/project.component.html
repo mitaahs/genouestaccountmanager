@@ -77,17 +77,17 @@
         <div class="modal-footer" id="submit">
           <div class="form-group row col-sm-12">
             <!-- Button with terms_and_conditions_hds -->
-            <button *ngIf="config.project && config.project.terms_and_conditions_hds" id="test" type="submit" class="p-button p-button-sm p-button-primary" [disabled]="id.invalid || expire.invalid || description.invalid || terms_and_conditions_hds.invalid" [ngClass]="{ 'disabled-btn': id.invalid || expire.invalid || description.invalid || terms_and_conditions_hds.invalid }">Ask Admin</button>
+            <p-button severity="primary" size="small" *ngIf="config.project && config.project.terms_and_conditions_hds" id="test" type="submit" [disabled]="id.invalid || expire.invalid || description.invalid || terms_and_conditions_hds.invalid" [ngstyleClass]="{ 'disabled-btn': id.invalid || expire.invalid || description.invalid || terms_and_conditions_hds.invalid }" label="Ask Admin"></p-button>
             <!-- Button without terms_and_conditions_hds -->
-            <button *ngIf="!(config.project && config.project.terms_and_conditions_hds)" id="test" type="submit" class="p-button p-button-sm p-button-primary" [disabled]="id.invalid || expire.invalid || description.invalid" [ngClass]="{ 'disabled-btn': id.invalid || expire.invalid || description.invalid }">Ask Admin</button>
-            <button type="button" class="p-button p-button-sm p-button-secondary" data-dismiss="modal">Cancel</button>
+            <p-button severity="primary" size="small" *ngIf="!(config.project && config.project.terms_and_conditions_hds)" id="test" type="submit" [disabled]="id.invalid || expire.invalid || description.invalid" [ngstyleClass]="{ 'disabled-btn': id.invalid || expire.invalid || description.invalid }" label="Ask Admin"></p-button>
+            <p-button severity="secondary" size="small" type="button" data-dismiss="modal" label="Cancel"></p-button>
           </div>
         </div>
       </form>
     </div>
   </div>
 </div>
-<button *ngIf="session_user" type="button" class="p-button p-button-sm p-button-primary" data-toggle="modal" data-target="#ask_project">Request A New Project</button>
+<p-button *ngIf="session_user" type="button" size="small" severity="primary" data-toggle="modal" data-target="#ask_project" label="Request A New Project"></p-button>
 
 
 <div class="card bg-light">
@@ -137,7 +137,7 @@
             <td>{{ project.created_at | date }}</td>
             <td>{{ project.expire | date }}</td>
             <td>
-              <button *ngIf="!session_user.is_admin && project.owner != session_user.uid" type="button" class="p-button p-button-sm p-button-warning" (click)="request_user(project, session_user.uid, 'remove')">Leave project</button>
+              <p-button severity="warn" size="small" *ngIf="!session_user.is_admin && project.owner != session_user.uid" type="button" (onClick)="request_user(project, session_user.uid, 'remove')" label="Leave project"></p-button>
               <a *ngIf="session_user.is_admin" routerLink="/admin/project/{{ project.id }}"><span class="p-button p-button-sm p-button-danger">Admin</span></a>
             </td>
           </tr>
@@ -178,7 +178,7 @@
           </div>
           <div class="col-sm-3">
             <label style="opacity: 0;">Add new manager</label>
-            <button type="button" class="p-button p-button-sm p-button-success" (click)="add_manager(selectedProject, new_manager)">Promote to Manager</button>
+            <p-button severity="success" size="small" type="button" (onClick)="add_manager(selectedProject, new_manager)" label="Promote to Manager"></p-button>
           </div>
           <div class="col-sm-3">
             <label for="rm_manager">Remove project manager</label>
@@ -188,7 +188,7 @@
           </div>
           <div class="col-sm-3">
             <label style="opacity: 0;">Remove manager</label>
-            <button type="button" class="p-button p-button-sm p-button-danger"(click)="remove_manager(selectedProject, rm_manager)">Demote to Member</button>
+            <p-button severity="danger" size="small" type="button" (onClick)="remove_manager(selectedProject, rm_manager)" label="Demote to Member"></p-button>
           </div>
         </div>
       </form>
@@ -214,7 +214,7 @@
           </div>
           <div class="col-sm-3">
             <label style="opacity: 0;">Request new member</label>
-            <button type="button" class="p-button p-button-sm p-button-primary" (click)="request_user(selectedProject, new_user, 'add')">Request New Member</button>
+            <p-button severity="primary" size="small" type="button" (onClick)="request_user(selectedProject, new_user, 'add')" label="Request New Member"></p-button>
           </div>
           <div class="col-sm-3">
             <label for="remove_user">Remove project member</label>
@@ -224,7 +224,7 @@
           </div>
           <div class="col-sm-3">
             <label style="opacity: 0;">Request member removal</label>
-            <button type="button" class="p-button p-button-sm p-button-warning" (click)="request_user(selectedProject, remove_user, 'remove')">Request Member Removal</button>
+            <p-button severity="warn" size="small" type="button" (onClick)="request_user(selectedProject, remove_user, 'remove')" label="Request Member Removal"></p-button>
           </div>
         </div>
       </form>
@@ -299,7 +299,7 @@
                 <b>Expiration</b>&nbsp;
                 <span class="glyphicon glyphicon-question-sign" title="Expiration date" tooltip></span>
               </td>
-              <td>{{ selectedProject.expire | date }} &nbsp; <button *ngIf="config.project && config.project.allow_extend" class="p-button p-button-sm p-button-success" (click)="extend(selectedProject)">Extend validity</button></td>
+              <td>{{ selectedProject.expire | date }} &nbsp; <p-button severity="success" size="small" *ngIf="config.project && config.project.allow_extend" (onClick)="extend(selectedProject)" label="Extend validity"></p-button></td>
             </tr>
             <tr>
               <td>
@@ -374,7 +374,7 @@
         <p>As our computing infrastructure is not HDS-certified (Health Data Hosting), health data collected during activities of prevention, diagnostic and care or related to social and medical and social follow-up cannot be uploaded, stored or processed (article L.1111-8, French Public Health Code).</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <p-button type="button" styleClass="btn btn-secondary" data-dismiss="modal" label="Close"></p-button>
       </div>
     </div>
   </div>

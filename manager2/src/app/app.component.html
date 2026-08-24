@@ -5,14 +5,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="onfirmLogout">Confirm logout</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <p-button type="button" styleClass="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
+          </p-button>
         </div>
         <div class="modal-body">Do you wish to logout?</div>
         <div class="modal-footer">
-          <button type="button" class="p-button p-button-sm p-button-outline-secondary" data-dismiss="modal">Stay logged in</button>
-          <button type="button " routerLink="/logout" data-dismiss="modal" class="p-button p-button-sm p-button-danger">Logout</button>
+          <p-button type="button" severity="secondary" size="small" data-dismiss="modal" label="Stay logged in"></p-button>
+          <p-button type="button " routerLink="/logout" data-dismiss="modal" size="small" severity="danger" label="Logout"></p-button>
         </div>
       </div>
     </div>
@@ -22,9 +22,9 @@
       <img class="d-inline-block align-top" style="width: 70px; height: 50px" src="assets/images/logo-brand.png" alt="" />
       {{ config.name }} Account Manager
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <p-button styleClass="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </p-button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li *ngIf="isLogged && usages.length > 0" class="nav-item dropdown">

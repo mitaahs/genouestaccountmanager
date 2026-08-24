@@ -48,8 +48,8 @@
             </p-table>
           </div>
         </div>
-        <button class="btn btn-sm btn-success" (click)="validate_selected_databases()">Accept</button>
-        <button class="btn btn-sm btn-danger" (click)="refuse_selected_databases()">Reject</button>
+        <p-button size="small" severity="success" (onClick)="validate_selected_databases()" label="Accept"></p-button>
+        <p-button size="small" severity="danger" (onClick)="refuse_selected_databases()" label="Reject"></p-button>
       </div>
     </div>
   </div>
@@ -155,7 +155,7 @@
 
         <div class="col-sm-1">
           <label style="opacity: 0" class="control-label">Create</label>
-          <button type="button" class="p-button p-button-sm p-button-secondary" (click)="declare_db()">Declare</button>
+          <p-button type="button" severity="econdary" size="small" (onClick)="declare_db()" label="Declare"></p-button>
         </div>
       </div>
     </form>
@@ -186,7 +186,7 @@
         </div>
         <div class="col-sm-2">
           <label for="modifyOwner" style="opacity: 0">Modify</label>
-          <button id="modifyOwner" type="button" class="p-button p-button-sm p-button-secondary" (click)="changeOwner()" class="form-control">Modify</button>
+          <p-button id="modifyOwner" type="button" size="small" severity="secondary" (onClick)="changeOwner()" styleClass="form-control" label="Modify"></p-button>
         </div>
       </div>
     </form>

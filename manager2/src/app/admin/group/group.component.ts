@@ -9,6 +9,8 @@ import { Table } from 'primeng/table';
     selector: 'app-groups',
     templateUrl: './group.component.html'
     // styleUrls: ['./group.component.css']
+    ,
+    standalone: false
 })
 export class GroupComponent implements OnInit {
     @ViewChild('dtg') tableGroups: Table;

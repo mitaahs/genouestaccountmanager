@@ -17,7 +17,7 @@
               <tr>
                 <td>
                   <a routerLink="/user/{{ user.uid }}">
-                    <span class="p-button p-button-sm p-button-warning">{{ user.uid }}</span>
+                    <p-button size="small" severity="warn">{{ user.uid }}</p-button>
                   </a>
                 </td>
                 <td>{{ user.email }}</td>
@@ -49,7 +49,7 @@
               <tr>
                 <td>
                   <a routerLink="/user/{{ user.uid }}"
-                    ><span class="p-button p-button-sm p-button-warning">{{ user.uid }}</span></a
+                    ><p-button size="small" severity="warn">{{ user.uid }}</p-button></a
                   >
                 </td>
                 <td>{{ user.email }}</td>

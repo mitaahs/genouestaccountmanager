@@ -4,7 +4,8 @@ import { ConfigService } from 'src/app/config.service';
 @Component({
     selector: 'app-registered',
     templateUrl: './registered.component.html',
-    styleUrls: ['./registered.component.css']
+    styleUrls: ['./registered.component.css'],
+    standalone: false
 })
 export class RegisteredComponent implements OnInit {
     config: any;

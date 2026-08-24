@@ -16,7 +16,8 @@ export class FlashMessagesService {
 @Component({
     selector: 'flash-messages',
     templateUrl: './flash.component.html',
-    styleUrls: ['./flash.component.css']
+    styleUrls: ['./flash.component.css'],
+    standalone: false
 })
 export class FlashComponent implements OnInit {
     private _defaults = {
