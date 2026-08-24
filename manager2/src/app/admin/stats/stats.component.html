@@ -1,32 +1,40 @@
 <div class="card bg-light">
   <div class="card-header">Status</div>
   <div class="card-body">
-    <p-button severity="primary" size="small" *ngFor="let s of status" type="button" >
-      {{ s.title }} <span class="badge badge-light">{{ s.value }}</span>
-      <span class="sr-only">user in {{ s.title }} status</span>
-    </p-button>
+    @for (s of status; track s) {
+      <p-button severity="primary" size="small" type="button" >
+        {{ s.title }} <span class="badge badge-light">{{ s.value }}</span>
+        <span class="sr-only">user in {{ s.title }} status</span>
+      </p-button>
+    }
   </div>
 </div>
 
 <div class="card bg-light">
   <div class="card-header">Email domain</div>
   <div class="card-body">
-    <p-button severity="primary" size="small" *ngFor="let s of domains" type="button" >
-      {{ s.title }} <span class="badge badge-light">{{ s.value }}</span>
-      <span class="sr-only">user in {{ s.title }} mail domain</span>
-    </p-button>
+    @for (s of domains; track s) {
+      <p-button severity="primary" size="small" type="button" >
+        {{ s.title }} <span class="badge badge-light">{{ s.value }}</span>
+        <span class="sr-only">user in {{ s.title }} mail domain</span>
+      </p-button>
+    }
   </div>
 </div>
 
 <div class="card bg-light">
   <div class="card-header">Extra info</div>
   <div class="card-body">
-    <div *ngFor="let extra of extras | keyvalue">
-      <div>{{ extra.key }}</div>
-      <p-button severity="primary" size="small" *ngFor="let s of extra.value | keyvalue" type="button" >
-        {{ s.key }} <span class="badge badge-light">{{ s.value }}</span>
-        <span class="sr-only">user extra info {{ s.key }}</span>
-      </p-button>
-    </div>
+    @for (extra of extras | keyvalue; track extra) {
+      <div>
+        <div>{{ extra.key }}</div>
+        @for (s of extra.value | keyvalue; track s) {
+          <p-button severity="primary" size="small" type="button" >
+            {{ s.key }} <span class="badge badge-light">{{ s.value }}</span>
+            <span class="sr-only">user extra info {{ s.key }}</span>
+          </p-button>
+        }
+      </div>
+    }
   </div>
 </div>
