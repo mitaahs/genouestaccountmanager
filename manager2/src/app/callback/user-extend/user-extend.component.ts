@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { UserService } from 'src/app/user/user.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
     selector: 'app-user-extend',
     templateUrl: './user-extend.component.html',
     styleUrls: ['./user-extend.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class UserExtendComponent implements OnInit {

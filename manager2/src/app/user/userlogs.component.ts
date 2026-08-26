@@ -1,10 +1,11 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Table } from 'primeng/table';
 import { UserService } from './user.service';
 
 @Component({
     selector: 'app-userlogs',
     templateUrl: './userlogs.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class UserLogsComponent {

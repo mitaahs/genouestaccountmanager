@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Website, WebsiteService } from 'src/app/user/website.service';
 import { User, UserService } from 'src/app/user/user.service';
 
@@ -8,6 +8,7 @@ import { Table } from 'primeng/table';
     selector: 'app-websites',
     templateUrl: './websites.component.html',
     styleUrls: ['./websites.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class WebsitesComponent implements OnInit {

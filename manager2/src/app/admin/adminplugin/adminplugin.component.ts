@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PluginService } from 'src/app/plugin/plugin.service';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -8,6 +8,7 @@ import { User } from '../../user/user.service';
     selector: 'app-adminplugin',
     templateUrl: './adminplugin.component.html',
     styleUrls: ['./adminplugin.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AdminpluginComponent implements OnInit {

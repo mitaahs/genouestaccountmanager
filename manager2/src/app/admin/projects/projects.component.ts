@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from 'src/app/config.service';
 import { Project, ProjectsService } from 'src/app/admin/projects/projects.service';
@@ -11,6 +11,7 @@ import { Table } from 'primeng/table';
     selector: 'app-projects',
     templateUrl: './projects.component.html',
     styleUrls: ['./projects.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ProjectsComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 @Component({
     selector: 'app-info',
     template: `<div class="alert alert-info">
@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
     </div> `,
     // templateUrl: './info.component.html',
     styleUrls: ['./info.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class RegisteredInfoComponent implements OnInit {

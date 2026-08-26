@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'app-my-delete-confirm',
     templateUrl: './my-delete-confirm.component.html',
     styleUrls: ['./my-delete-confirm.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class MyDeleteConfirmComponent implements OnInit {

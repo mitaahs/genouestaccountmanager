@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Group, GroupsService } from '../groups/groups.service';
 import { Project, ProjectsService } from '../projects/projects.service';
@@ -10,6 +10,7 @@ import { Table } from 'primeng/table';
     templateUrl: './group.component.html'
     // styleUrls: ['./group.component.css']
     ,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class GroupComponent implements OnInit {

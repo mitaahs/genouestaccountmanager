@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { ConfigService } from 'src/app/config.service';
 import { UserService } from 'src/app/user/user.service';
 
@@ -17,6 +17,7 @@ import { Table } from 'primeng/table';
     selector: 'app-messages',
     templateUrl: './messages.component.html',
     styleUrls: ['./messages.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class MessagesComponent implements OnInit {

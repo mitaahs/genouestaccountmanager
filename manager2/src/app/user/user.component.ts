@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { User, UserService } from './user.service';
 import { AuthService } from '../auth/auth.service';
 import { ConfigService } from '../config.service';
@@ -33,6 +33,7 @@ import { NgModel } from '@angular/forms';
     selector: 'app-user-extra',
     templateUrl: './user-extra.component.html',
     styleUrls: ['./user-extra.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class UserExtraComponent implements OnInit {
@@ -112,6 +113,7 @@ export class UserExtraComponent implements OnInit {
     selector: 'app-user',
     templateUrl: './user.component.html',
     styleUrls: ['./user.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class UserComponent implements OnInit {

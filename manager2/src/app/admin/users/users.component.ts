@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Pipe, PipeTransform } from '@angular/core';
 import { User, UserService } from 'src/app/user/user.service';
 
@@ -24,6 +24,7 @@ export class MyStatusFilterPipe implements PipeTransform {
     selector: 'app-users',
     templateUrl: './users.component.html',
     styleUrls: ['./users.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class UsersComponent implements OnInit {

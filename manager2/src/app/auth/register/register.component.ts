@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { User, UserService } from 'src/app/user/user.service';
 import { ConfigService } from 'src/app/config.service';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -10,6 +10,7 @@ import latinize from 'latinize';
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class RegisterComponent implements OnInit {

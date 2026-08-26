@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, Input, OnInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, ViewChild, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Directive, Type, ViewContainerRef } from '@angular/core';
 import { BasePluginComponent } from './base-plugin/base-plugin.component';
 
@@ -27,6 +27,7 @@ import { BasePluginComponent } from './base-plugin/base-plugin.component';
           </div>
         }
         `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class GomailPluginComponent extends BasePluginComponent implements OnInit {
@@ -77,6 +78,7 @@ export class GomailPluginComponent extends BasePluginComponent implements OnInit
           </div>
         }
         `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DataAccessPluginComponent extends BasePluginComponent implements OnInit {
@@ -88,6 +90,7 @@ export class DataAccessPluginComponent extends BasePluginComponent implements On
 
 @Component({
     template: ` <div></div> `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class GalaxyPluginComponent extends BasePluginComponent implements OnInit {
@@ -133,6 +136,7 @@ export class GalaxyPluginComponent extends BasePluginComponent implements OnInit
           </div>
         }
         `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class GenostackPluginComponent extends BasePluginComponent implements OnInit {
@@ -148,6 +152,7 @@ export class GenostackPluginComponent extends BasePluginComponent implements OnI
             <div>Populate_home will create a project_demo folder upon user activation.</div>
         </div>
     `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PopulateHomePluginComponent extends BasePluginComponent implements OnInit {
@@ -183,6 +188,7 @@ export class PopulateHomePluginComponent extends BasePluginComponent implements 
           }
         </div>
         `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class QuotasPluginComponent extends BasePluginComponent implements OnInit {
@@ -206,6 +212,7 @@ export class QuotasPluginComponent extends BasePluginComponent implements OnInit
           }
         </div>
         `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TestPluginComponent extends BasePluginComponent implements OnInit {
@@ -293,6 +300,7 @@ export class TestPluginComponent extends BasePluginComponent implements OnInit {
           </div>
         }
         `,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AdminQuotaExamplePluginComponent extends BasePluginComponent implements OnInit {
@@ -364,28 +372,27 @@ export class PluginItems {
     selector: 'app-plugin',
     templateUrl: './plugin.component.html',
     styleUrls: ['./plugin.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PluginComponent implements OnInit, OnChanges {
     @Input() pluginItem: string;
     @Input() userId: string;
-    @ViewChild(PluginDirective, { static: true }) appPlugin: PluginDirective;
-    constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+    @ViewChild('pluginContainer', { read: ViewContainerRef }) pluginContainer: ViewContainerRef;
 
     ngOnInit() {
-        // should load component from its name (pluginItem should be plugin name, a string)
+        this.loadComponent();
+    }
+
+    private loadComponent() {
         let pItem = PluginItems.getItem(this.pluginItem);
         if (!pItem) {
             return;
         }
 
-        // pItem.userId = this.userId;
-        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(pItem.component);
-
-        let viewContainerRef = this.appPlugin.viewContainerRef;
-        viewContainerRef.clear();
-
-        let componentRef = viewContainerRef.createComponent(componentFactory);
+        this.pluginContainer.clear();
+        
+        let componentRef = this.pluginContainer.createComponent(pItem.component);
         (<BasePluginComponent>componentRef.instance).userId = this.userId;
         //(<BasePluginComponent>componentRef.instance).loadData(this.userId);
     }
@@ -397,13 +404,9 @@ export class PluginComponent implements OnInit, OnChanges {
                 return;
             }
 
-            // pItem.userId = this.userId;
-            let componentFactory = this.componentFactoryResolver.resolveComponentFactory(pItem.component);
+            this.pluginContainer.clear();
 
-            let viewContainerRef = this.appPlugin.viewContainerRef;
-            viewContainerRef.clear();
-
-            let componentRef = viewContainerRef.createComponent(componentFactory);
+            let componentRef = this.pluginContainer.createComponent(pItem.component);
             (<BasePluginComponent>componentRef.instance).userId = changes.userId.currentValue;
         }
     }

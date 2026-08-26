@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { User, UserService } from '../user.service';
 import { Project } from '../../admin/projects/projects.service';
 
@@ -6,6 +6,7 @@ import { Project } from '../../admin/projects/projects.service';
     selector: 'app-user-projects',
     templateUrl: './projects.component.html',
     styleUrls: ['./projects.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ProjectsComponent implements OnInit {
