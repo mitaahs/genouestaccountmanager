@@ -24,7 +24,7 @@
             <br />
           }
           @if (mailing_list) {
-            <p-button type="button" size="small" severity="primary" data-toggle="modal" data-target="#members_view" label="View list members"></p-button>
+            <p-button type="button" size="small" severity="primary" data-bs-toggle="modal" data-bs-target="#members_view" label="View list members"></p-button>
           }
         </div>
       </div>
@@ -67,7 +67,7 @@
     </div>
     <!-- Button trigger modal -->
     @if (message && subject && (input_type == 'HTML' || input_type == 'Markdown')) {
-      <p-button type="button" size="small" severity="primary" styleClass="pull-right" data-toggle="modal" data-target="#HTML_viewer" label="Viewer"></p-button>
+      <p-button type="button" size="small" severity="primary" styleClass="pull-right" data-bs-toggle="modal" data-bs-target="#HTML_viewer" label="Viewer"></p-button>
     }
 
     @if (mailing_lists && mailing_lists.length > 0) {

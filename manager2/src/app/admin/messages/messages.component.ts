@@ -8,7 +8,7 @@ import { AuthService } from '../../auth/auth.service';
 
 import { Observable } from 'rxjs';
 
-import marked from 'marked';
+import { marked } from 'marked';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'src/app/utils/flash/flash.component';
 import { Table } from '@openng/optimus-ui/table';
@@ -136,7 +136,7 @@ export class MessagesComponent implements OnInit {
     trustAsHtml(message): string { return message; }
 
     trustAsMarkdown(message): string {
-        let mark = marked(message);
+        let mark = marked(message, { async: false });
         return mark;
     }
 

@@ -32,7 +32,7 @@ export class TpsComponent implements OnInit {
     viewDate: Date;
     events: CalendarEvent[];
     selectedEvent: CalendarEvent;
-    refresh: Subject<any> = new Subject();
+    refresh = new Subject<void>();
     quantity: number;
     fromDate: Date;
     toDate: Date;

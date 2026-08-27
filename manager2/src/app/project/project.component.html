@@ -83,7 +83,7 @@
                 <input class="form-check-input is-invalid" type="checkbox" value="" id="new_project_terms_and_conditions_hds" name="terms_and_conditions_hds" [(ngModel)]="new_project.terms_and_conditions_hds" #terms_and_conditions_hds="ngModel" required />
                 <label class="form-check-label" for="new_project_terms_and_conditions_hds">
                   I hereby certify that I will not upload, store or process health data collected during activities of prevention, diagnostic and care or related to social and medical and social follow-up.
-                  <a href="#termsAndConditionsHdsModal" data-toggle="modal">(Learn more)</a>
+                  <a href="#termsAndConditionsHdsModal" data-bs-toggle="modal">(Learn more)</a>
                 </label>
                 @if (terms_and_conditions_hds.invalid) {
                   <div class="invalid-feedback">You must agree to the terms and conditions before submitting.</div>
@@ -110,7 +110,7 @@
   </div>
 </div>
 @if (session_user) {
-  <p-button type="button" size="small" severity="primary" data-toggle="modal" data-target="#ask_project" label="Request A New Project"></p-button>
+  <p-button type="button" size="small" severity="primary" data-bs-toggle="modal" data-bs-target="#ask_project" label="Request A New Project"></p-button>
 }
 
 

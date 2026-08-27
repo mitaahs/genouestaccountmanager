@@ -137,7 +137,7 @@
             <p-button severity="secondary" size="small" (onClick)="cancel_reservation()" label="Cancel"></p-button>
           }
           @if (selectedEvent.meta.created && !selectedEvent.meta.over && session_user.is_admin) {
-            <p-button severity="primary" size="small" type="button" data-toggle="modal" data-target="#extend" label="Extend"></p-button>
+            <p-button severity="primary" size="small" type="button" data-bs-toggle="modal" data-bs-target="#extend" label="Extend"></p-button>
           }
           @if (selectedEvent.meta.created && !selectedEvent.meta.over && session_user.is_admin) {
             <p-button severity="warn" size="small" (onClick)="remove_reservation()" label="Remove"></p-button>

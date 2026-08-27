@@ -22,14 +22,14 @@
       <img class="d-inline-block align-top" style="width: 70px; height: 50px" src="assets/images/logo-brand.png" alt="" />
       {{ config.name }} Account Manager
     </a>
-    <p-button styleClass="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <p-button styleClass="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </p-button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         @if (isLogged && usages.length > 0) {
           <li class="nav-item dropdown">
-            <a href="" id="dropdownMenu0" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="oi oi-bar-chart"></i> Usage</a>
+            <a href="" id="dropdownMenu0" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="oi oi-bar-chart"></i> Usage</a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu0">
               @for (usage of usages; track usage) {
                 <li>
@@ -75,7 +75,7 @@
 
         @if (user && user.is_admin) {
           <li class="nav-item dropdown">
-            <a href="" id="dropdownMenu1" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-cog"></i> Admin</a>
+            <a href="" id="dropdownMenu1" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-cog"></i> Admin</a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <li><a class="dropdown-item" routerLink="/register">New Account</a></li>
               <li><a class="dropdown-item" routerLink="/admin/user">Users</a></li>
@@ -112,7 +112,7 @@
         }
         @if (isLogged) {
           <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#confirmLogout">Log Out</a>
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#confirmLogout">Log Out</a>
           </li>
         }
       </ul>
