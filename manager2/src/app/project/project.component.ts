@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { ConfigService } from '../config.service';
 import { User, UserService } from 'src/app/user/user.service';
 
-import { Table } from 'primeng/table';
+import { Table } from '@openng/optimus-ui/table';
 
 @Component({
     selector: 'app-project',

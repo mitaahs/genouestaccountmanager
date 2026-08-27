@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/
 import { Website, WebsiteService } from 'src/app/user/website.service';
 import { User, UserService } from 'src/app/user/user.service';
 
-import { Table } from 'primeng/table';
+import { Table } from '@openng/optimus-ui/table';
 
 @Component({
     selector: 'app-websites',

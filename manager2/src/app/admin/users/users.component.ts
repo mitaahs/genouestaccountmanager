@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/
 import { Pipe, PipeTransform } from '@angular/core';
 import { User, UserService } from 'src/app/user/user.service';
 
-import { Table } from 'primeng/table';
+import { Table } from '@openng/optimus-ui/table';
 
 @Pipe({
     name: 'statusFilter',

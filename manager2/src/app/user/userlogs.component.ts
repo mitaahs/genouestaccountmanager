@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
-import { Table } from 'primeng/table';
+import { Table } from '@openng/optimus-ui/table';
 import { UserService } from './user.service';
 
 @Component({

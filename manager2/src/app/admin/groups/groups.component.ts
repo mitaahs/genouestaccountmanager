@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/
 import { Group, GroupsService } from './groups.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../user/user.service';
-import { Table } from 'primeng/table';
+import { Table } from '@openng/optimus-ui/table';
 
 @Component({
     selector: 'app-groups',

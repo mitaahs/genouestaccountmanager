@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Database, DatabaseService } from 'src/app/user/database.service';
 import { User, UserService } from 'src/app/user/user.service';
-import { Table } from 'primeng/table';
+import { Table } from '@openng/optimus-ui/table';
 
 @Component({
     selector: 'app-database',

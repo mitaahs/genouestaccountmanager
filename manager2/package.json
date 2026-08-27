@@ -35,11 +35,12 @@
     "marked": "^0.7.0",
     "open-iconic": "^1.1.1",
     "popper.js": "^1.16.1",
-    "primeicons": "^7.0.0",
-    "primeng": "^22.1.0",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
-    "zone.js": "~0.15.1"
+    "zone.js": "~0.15.1",
+    "@openng/icons": "^1.0.0",
+    "@openng/optimus-ui-themes": "^2.0.1",
+    "@openng/optimus-ui": "2.0.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^22.1.5",

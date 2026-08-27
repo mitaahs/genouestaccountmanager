@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import marked from 'marked';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'src/app/utils/flash/flash.component';
-import { Table } from 'primeng/table';
+import { Table } from '@openng/optimus-ui/table';
 
 @Component({
     selector: 'app-messages',

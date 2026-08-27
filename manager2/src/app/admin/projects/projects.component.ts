@@ -5,7 +5,7 @@ import { Project, ProjectsService } from 'src/app/admin/projects/projects.servic
 import { Group, GroupsService } from 'src/app/admin/groups/groups.service';
 import { User, UserService } from 'src/app/user/user.service';
 import latinize from 'latinize';
-import { Table } from 'primeng/table';
+import { Table } from '@openng/optimus-ui/table';
 
 @Component({
     selector: 'app-projects',

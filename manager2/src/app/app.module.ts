@@ -3,9 +3,9 @@ import { NgModule, Injectable, ErrorHandler } from '@angular/core';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
+import { ButtonModule } from '@openng/optimus-ui/button';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { providePrimeNG } from 'primeng/config';
+import { provideOptimus } from '@openng/optimus-ui/config';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -51,7 +51,7 @@ import { AdminpluginComponent } from './admin/adminplugin/adminplugin.component'
 import { FlashComponent } from './utils/flash/flash.component';
 import { TagComponent } from './utils/tag/tag.component';
 import { UserLogsComponent } from './user/userlogs.component';
-import { TableModule } from 'primeng/table';
+import { TableModule } from '@openng/optimus-ui/table';
 import { environment } from '../environments/environment';
 import * as Sentry from '@sentry/browser';
 import { Preset } from './custom.preset';
@@ -142,7 +142,7 @@ export class SentryErrorHandler implements ErrorHandler {
         { provide: ErrorHandler, useClass: SentryErrorHandler },
         provideHttpClient(withXhr(), withInterceptorsFromDi()),
         provideAnimationsAsync(),
-        providePrimeNG({ 
+        provideOptimus({ 
             theme: {
                 preset: Preset,
                 }

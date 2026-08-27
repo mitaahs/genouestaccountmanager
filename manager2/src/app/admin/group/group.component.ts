@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Group, GroupsService } from '../groups/groups.service';
 import { Project, ProjectsService } from '../projects/projects.service';
 import { User } from '../../user/user.service';
-import { Table } from 'primeng/table';
+import { Table } from '@openng/optimus-ui/table';
 
 @Component({
     selector: 'app-groups',
