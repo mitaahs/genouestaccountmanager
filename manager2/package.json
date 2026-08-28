@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "compress": "gzip -k dist/my-ui/*"
+    "compress": "find dist/my-ui/browser -type f ! -name '*.gz' -exec gzip -k {} +"
   },
   "private": true,
   "dependencies": {
