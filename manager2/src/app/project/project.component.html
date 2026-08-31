@@ -102,7 +102,7 @@
             @if (!(config.project && config.project.terms_and_conditions_hds)) {
               <p-button severity="primary" size="small" id="test" type="submit" [disabled]="id.invalid || expire.invalid || description.invalid" [ngstyleClass]="{ 'disabled-btn': id.invalid || expire.invalid || description.invalid }" label="Ask Admin"></p-button>
             }
-            <p-button severity="secondary" size="small" type="button" data-dismiss="modal" label="Cancel"></p-button>
+            <button type="button" class="p-button p-button-sm p-button-secondary" data-bs-dismiss="modal">Cancel</button>
           </div>
         </div>
       </form>
@@ -465,7 +465,7 @@
                   <p>As our computing infrastructure is not HDS-certified (Health Data Hosting), health data collected during activities of prevention, diagnostic and care or related to social and medical and social follow-up cannot be uploaded, stored or processed (article L.1111-8, French Public Health Code).</p>
                 </div>
                 <div class="modal-footer">
-                  <p-button type="button" styleClass="btn btn-secondary" data-dismiss="modal" label="Close"></p-button>
+                  <p-button type="button" styleClass="btn btn-secondary" data-bs-dismiss="modal" label="Close"></p-button>
                 </div>
               </div>
             </div>

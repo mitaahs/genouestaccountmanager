@@ -1,23 +1,24 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="container">
-  <div class="modal fade" id="confirmLogout" tabindex="-1" role="dialog" aria-labelledby="confirmLogoutLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="onfirmLogout">Confirm logout</h5>
-          <p-button type="button" styleClass="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </p-button>
-        </div>
-        <div class="modal-body">Do you wish to logout?</div>
-        <div class="modal-footer">
-          <p-button type="button" severity="secondary" size="small" data-dismiss="modal" label="Stay logged in"></p-button>
-          <p-button type="button " routerLink="/logout" data-dismiss="modal" size="small" severity="danger" label="Logout"></p-button>
-        </div>
+<div class="modal fade" id="confirmLogout" tabindex="-1" role="dialog" aria-labelledby="confirmLogoutLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="onfirmLogout">Confirm logout</h5>
+        <p-button type="button" styleClass="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </p-button>
+      </div>
+      <div class="modal-body">Do you wish to logout?</div>
+      <div class="modal-footer">
+        <p-button type="button" severity="secondary" size="small" data-bs-dismiss="modal" label="Stay logged in"></p-button>
+        <p-button type="button " routerLink="/logout" data-bs-dismiss="modal" size="small" severity="danger" label="Logout"></p-button>
       </div>
     </div>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark bg-dark navbar-inverse">
+</div>
+
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark bg-dark navbar-inverse px-3">
     <a class="navbar-brand" routerLink="/">
       <img class="d-inline-block align-top" style="width: 70px; height: 50px" src="assets/images/logo-brand.png" alt="" />
       {{ config.name }} Account Manager
