@@ -30,7 +30,7 @@
       @if (session_user.is_admin && (user.status == STATUS_PENDING_APPROVAL || user.status == STATUS_PENDING_EMAIL)) {
         <p-button severity="success" size="small" (onClick)="activate()" label="Activate"></p-button>
       }
-      @if (user.status === STATUS_ACTIVE) {
+      @if (user.status === STATUS_ACTIVE && (session_user.is_admin || user.disable_extend === false)) {
         <p-button label="Extend" severity="success" size="small" (onClick)="extend()"> </p-button>
       }
       @if (session_user.is_admin && user.status == STATUS_EXPIRED) {
@@ -285,6 +285,10 @@
                       <div class="form-check row">
                         <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="user.send_copy_to_support" type="checkbox" class="form-check-input" />
                         <label class="col-8 form-check-label">Copy mail to Support Team</label>
+                      </div>
+                      <div class="form-check row">
+                        <input [ngModelOptions]="{ standalone: true }" [(ngModel)]="user.disable_extend" type="checkbox" class="form-check-input" />
+                        <label class="col-8 form-check-label">Disable user self-extend rights</label>
                       </div>
                     </div>
                   }

@@ -1,6 +1,14 @@
 This is a basic setup to deploy genouestaccountmanager for development.
 Genouestaccountmanager is fairly modular, so it will not fit a deployment for production. This is for basic usage.
 
+# Quick setup
+- The script `dev_env_launcher.sh` allows to easily start and stop a fully working dev environment (including automatic dev ldap updates). It also guides you in which packages to install if all the required packages are not installed on your system.
+- Using this script, you can easily change the verbosity of the dev env :
+   - Use `dev_env_launcher.sh v` to only see environment starting progress.
+   - Use `dev_env_launcher.sh vv` to see environment starting progress and commands errors.
+   - Use `dev_env_launcher.sh vvv` to see environment starting progress and all commands outputs for debugging.
+- This is the preferred method to launch the dev environment. If you wish to create your own setup, you can follow the guide below.
+
 # Setup
 
 * Edit ldap-data/01_orgs.ldif to fit your needs (not required)
@@ -19,8 +27,8 @@ Genouestaccountmanager is fairly modular, so it will not fit a deployment for pr
 
 * Install node > 18.0 (using nvm, or by hand)
 * Install ldap-utils
-  * /!\ Depending on your ldap-utils version, the '-h' option might not exists anymore. (Check the `ldapadd` command)
-  * If that's the case, you'll need to edit the scripts in templates/default/user/, and remplace `-h {{ CONFIG.ldap.host }}` by `-H ldap://{{ CONFIG.ldap.host }}`
+  * /!\ If you use an old ldap-utils version, the '-H' option might not exists. (Check the `ldapadd` command)
+  * If that's the case, you'll need to edit the scripts in templates/default/user/, and remplace `-H ldap://{{ CONFIG.ldap.host }}` by `-h {{ CONFIG.ldap.host }}`.
 * Export the following env variables:
 
 
@@ -56,7 +64,7 @@ ng build --base-href /manager2/ --source-map --watch
 # The build will be done after the 'Time:' log entry
 ```
 
-From there, you can lauch the server with the following command:
+From there, you can launch the server with the following command:
 
 ```
 # You can use the following env variables to automatically create an admin user

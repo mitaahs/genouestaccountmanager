@@ -10,11 +10,9 @@ RUN cd /root/genouestaccountmanager/manager2/src/environments && sed -i 's;apiUr
 RUN cd /root/genouestaccountmanager/manager2/src/environments && sed -i 's;sentry: "";sentry: "'"$SENTRY"'";' environment.prod.ts
 RUN cd /root/genouestaccountmanager/manager2 && npm ci && ng build --base-href /manager2/ --configuration production --source-map && rm -rf src && rm -rf node_modules && rm -f dist/my-ui/browser/*.gz && npm run compress
 
-
-FROM quay.io/osallou/node:16.13-buster
-RUN apt-get update && apt-get install -y ldap-utils vim openssh-client putty-tools
+FROM node:jod-trixie
+RUN apt-get update && apt-get install -y ldap-utils vim openssh-client putty-tools libldap2-dev uuid-dev
 COPY cron/gomngr.sh /opt/gomngr.sh
-
 RUN mkdir -p /root/genouestaccountmanager
 WORKDIR /root/genouestaccountmanager
 

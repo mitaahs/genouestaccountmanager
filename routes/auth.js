@@ -47,8 +47,12 @@ router.get('/logout', function (req, res) {
 
 router.get('/mail/auth/:id', async function (req, res) {
     // Request email token
+    if (req.locals.logInfo.session_user.uid !== req.params.id) {
+        return res.status(401).send({ message: 'Not authorized : cannot request token for another user' });
+    }
+
     if (!req.locals.logInfo.double_auth) {
-        return res.status(401).send({ message: 'Not double auth in progress' });
+        return res.status(401).send({ message: 'No double auth in progress' });
     }
 
     if (!notif.mailSet()) {
@@ -62,10 +66,15 @@ router.get('/mail/auth/:id', async function (req, res) {
     }
 
     let expire = new Date().getTime() + 60 * 10 * 1000;
-    req.session.mail_token = { token: password, expire: expire, user: user._id };
-    let mail_token = { token: password, expire: expire, user: user._id };
+    // Do NOT send the token in the jwt: it can be easily read user side.
+    // Store it in DB instead
+    await dbsrv.mongo_users().updateOne(
+        { uid: req.params.id },
+        { $set: { mail_token: { token: password, expire: expire } } }
+    );
+
     let usertoken = jwt.sign(
-        { user: user._id, isLogged: false, mail_token: mail_token, double_auth: true },
+        { user: user._id, isLogged: false, double_auth: true },
         CONFIG.general.secret,
         { expiresIn: '10 minutes' }
     );
@@ -92,13 +101,22 @@ router.get('/mail/auth/:id', async function (req, res) {
 
 router.post('/mail/auth/:id', async function (req, res) {
     // Check email token
+    if (req.locals.logInfo.session_user.uid !== req.params.id) {
+        return res.status(401).send({ message: 'Not authorized : cannot request token for another user' });
+    }
+    
     if (!req.locals.logInfo.double_auth) {
         return res.status(401).send({ message: 'No double auth in progress' });
     }
+
+    if (!req.locals.logInfo.id) {
+        return res.status(401).send({ message: 'Incorrect session' });
+    }
+
     let user = null;
     let isadmin = false;
     try {
-        user = await dbsrv.mongo_users().findOne({ uid: req.params.id });
+        user = await dbsrv.mongo_users().findOne({ _id: req.locals.logInfo.id });
         isadmin = await rolsrv.is_admin(user);
     } catch (e) {
         logger.error(e);
@@ -108,19 +126,28 @@ router.post('/mail/auth/:id', async function (req, res) {
     if (!user) {
         return res.status(404).send({ message: 'User not found' });
     }
+
+    if (user.uid !== req.params.id) {
+        return res.status(401).send({ message: 'Not authorized' });
+    }
+
     let usertoken = jwt.sign({ user: user._id, isLogged: true }, CONFIG.general.secret, { expiresIn: '2 days' });
-    let sess = req.session;
     let now = new Date().getTime();
+ 
+    let storedToken = user.mail_token;
     if (
-        !req.locals.logInfo.mail_token ||
-        user._id != req.locals.logInfo.mail_token['user'] ||
-        req.body.token != req.locals.logInfo.mail_token['token'] ||
-        now > sess.mail_token['expire']
+        !storedToken ||
+        now > storedToken.expire || 
+        req.body.token != storedToken.token
     ) {
         return res.status(403).send({ message: 'Invalid or expired token' });
     }
-    sess.gomngr = sess.mail_token['user'];
-    sess.mail_token = null;
+
+    // Clear token after successful use
+    await dbsrv.mongo_users().updateOne(
+        { uid: req.params.id },
+        { $unset: { mail_token: '' } }
+    );
 
     user.is_admin = isadmin;
 
@@ -149,6 +176,7 @@ router.post('/u2f/auth/:id', async function (req, res) {
     if (!req.locals.logInfo.double_auth) {
         return res.status(401).send({ message: 'No double auth in progress' });
     }
+
     let user = await dbsrv.mongo_users().findOne({ uid: req.params.id });
     if (!user) {
         return res.status(404).send({ message: 'User not found' });
