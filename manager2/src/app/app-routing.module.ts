@@ -160,8 +160,6 @@ const routes: Routes = [
         RouterModule.forRoot(
             routes,
             { enableTracing: false } // <-- debugging purposes only
- // <-- debugging purposes only
- // <-- debugging purposes only
         )
     ],
     exports: [RouterModule],
