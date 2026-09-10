@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, OnChanges, SimpleChanges, Output, ViewChild } from '@angular/core';
 import { User, UserService } from './user.service';
 import { AuthService } from '../auth/auth.service';
 import { ConfigService } from '../config.service';
@@ -51,28 +51,40 @@ export class UserExtraComponent implements OnInit {
         this.configService.config.subscribe(
             (resp) => {
                 this.config = resp;
-                let extras = resp.registration || [];
-                let user_extras = {};
-                if (this.user && this.user.extra_info) {
-                    for (let i = 0; i < this.user.extra_info.length; i++) {
-                        let extra_info = this.user.extra_info[i];
-                        user_extras[extra_info.title] = extra_info.value;
-                    }
-                }
-                for (let i = 0; i < extras.length; i++) {
-                    extras[i].value = extras[i].choices[0][0];
-                    if (extras[i].multiple) {
-                        extras[i].value = [extras[i].choices[0][0]];
-                    }
-                    if (user_extras[extras[i].title]) {
-                        extras[i].value = user_extras[extras[i].title];
-                    }
-                }
-                this.extras = extras;
-                console.log('extras', this.extras);
             },
             (err) => console.log('failed to get config')
         );
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+    if (changes['user'] && this.config) {
+        this.initializeExtras();
+    }
+}
+
+    initializeExtras() {
+        let extras = this.config.registration || [];
+        let user_extras = {};
+        
+        if (this.user && this.user.extra_info) {
+            for (let i = 0; i < this.user.extra_info.length; i++) {
+                let extra_info = this.user.extra_info[i];
+                user_extras[extra_info.title] = extra_info.value;
+            }
+        }
+        
+        for (let i = 0; i < extras.length; i++) {
+            extras[i].value = extras[i].choices[0][0];
+            if (extras[i].multiple) {
+                extras[i].value = [extras[i].choices[0][0]];
+            }
+            if (user_extras[extras[i].title]) {
+                extras[i].value = user_extras[extras[i].title];
+            }
+        }
+        
+        this.extras = extras;
+        console.log('extras', this.extras);
     }
 
     extraChange(title: string, data) {
